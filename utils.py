@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 
 
 def xml_to_data_frame(file_path):
-    '''takes filepath .xml and returns dataframe'''
-    try :
+    """takes filepath .xml and returns dataframe"""
+    try:
         with open(file_path, encoding='utf-8') as file:
 
             xml_data = ET.XML(file.read())
@@ -16,11 +16,27 @@ def xml_to_data_frame(file_path):
     return pd.DataFrame([row.attrib for row in xml_data])
 
 
+class Religion:
+    """includes all dataframes connected with one religion"""
+
+    def __init__(self, dictpath):
+        """dictpath is a path to a dict with all 8 .xml files"""
+
+        self.Badges = xml_to_data_frame(dictpath + "/Badges.xml")
+        self.Comments = xml_to_data_frame(dictpath + "/Comments.xml")
+        self.PostHistory = xml_to_data_frame(dictpath + "/PostHistory.xml")
+        self.PostLinks = xml_to_data_frame(dictpath + "/PostLinks.xml")
+        self.Posts = xml_to_data_frame(dictpath + "/Posts.xml")
+        self.Tags = xml_to_data_frame(dictpath + "/Tags.xml")
+        self.Users = xml_to_data_frame(dictpath + "/Users.xml")
+        self.Votes = xml_to_data_frame(dictpath + "/Votes.xml")
 
 
-
-if __name__=='__main__':
+if __name__ == '__main__':
     '''test something'''
+    buddyzm = Religion('../buddyzm') # działa jak macie tak jak ja
+
+    pass
 
 
 

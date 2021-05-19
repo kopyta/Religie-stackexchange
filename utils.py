@@ -1,6 +1,10 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
+import re
 
+
+def rmtags(str):
+    return re.sub(r'<.*?>', "", str)
 
 def xml_to_data_frame(file_path):
     """takes filepath .xml and returns dataframe"""
@@ -31,10 +35,12 @@ class Religion:
         self.Users = xml_to_data_frame(dictpath + "/Users.xml")
         self.Votes = xml_to_data_frame(dictpath + "/Votes.xml")
 
+    def clear_html_attrs(self):
+        self.Posts['clear_body'] = [rmtags(string).strip() for string in self.Posts['Body']]
 
 if __name__ == '__main__':
     '''test something'''
-    buddyzm = Religion('../buddyzm') # działa jak macie tak jak ja
+
 
     pass
 

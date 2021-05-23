@@ -38,7 +38,7 @@ class Religion:
 
     def clear_html_attrs(self):
         self.Posts['clear_body'] = [rmtags(string).strip() for string in self.Posts['Body']]
-
+        self.Comments['clear_text'] = [rmtags(string).strip() for string in self.Comments['Text']]
 if __name__ == '__main__':
     '''test something'''
 

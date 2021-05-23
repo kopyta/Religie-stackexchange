@@ -5,7 +5,7 @@ import re
 
 def rmtags(str):
 
-    return re.sub(r'<.*?>|[\\\.\,\';":\(\)\!\?]', "", str.replace('\n', ' '))
+    return re.sub(r'<.*?>|[\\.,\';":()!?]', "", str.replace('\n', ' '))
 
 def xml_to_data_frame(file_path):
     """takes filepath .xml and returns dataframe"""
@@ -46,5 +46,3 @@ if __name__ == '__main__':
     pass
 
 
-
-    pass
